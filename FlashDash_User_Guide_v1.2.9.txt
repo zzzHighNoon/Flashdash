@@ -28,7 +28,7 @@ STEP 1 -- Download the Installer
 The latest FlashDash installer is available on the project GitHub repository
 under the Releases section. Download the file named:
 
-    FlashDash-Setup-x.x.exe
+    FlashDash-x.x.x-Setup.exe
 
 STEP 2 -- Run the Installer
 -----------------------------
