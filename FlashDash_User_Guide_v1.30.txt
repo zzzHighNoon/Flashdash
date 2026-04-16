@@ -1,7 +1,7 @@
 ================================================================================
 FLASHDASH USER GUIDE
 Lewco Conveyor Sorter System -- Firmware Update Tool
-Version 1.2.10
+Version 1.30
 ================================================================================
 
 OVERVIEW
@@ -29,7 +29,7 @@ STEP 1 -- Download the Installer
 The latest FlashDash installer is available on the project GitHub repository
 under the Releases section. Download the file named:
 
-    FlashDash-x.x.x-Setup.exe
+    FlashDash-1.30-Setup.exe
 
 STEP 2 -- Run the Installer
 -----------------------------
@@ -290,6 +290,26 @@ Click "Provision". FlashDash will:
   3. Verify each hub responds at its new IP address over HTTP.
 
 After provisioning completes successfully, the site map is saved and FlashDash
+
+
+BOOTP WILDCARD MODE (field provisioning)
+------------------------------------------
+For field technicians who need to provision hubs without prior discovery,
+FlashDash offers BOOTP wildcard mode. This mode runs a BOOTP server that
+assigns sequential IP addresses to any hub that boots and sends a BOOTP request.
+
+To enable BOOTP wildcard mode:
+  1. Click "BOOTP Server" to open the configuration dialog.
+  2. Enter the starting IP address (e.g., 192.168.1.101).
+  3. Enter the subnet mask (e.g., 255.255.255.0) and gateway.
+  4. Click "Start". The BOOTP server begins listening.
+  5. Power cycle the hub(s). As each hub boots, it receives the next IP.
+
+The server automatically skips hubs that are already on the correct subnet,
+avoiding unnecessary NVM writes. Hubs on a different subnet will be reassigned.
+
+Click "Stop" when finished provisioning. The assigned addresses are logged
+in the status area.
 switches to the Drive Updates tab with hub information pre-loaded.
 
 
@@ -428,6 +448,12 @@ manually.
 ================================================================================
 VERSION HISTORY
 ================================================================================
+
+1.30 (2026-04-16)
+  - NEW: BOOTP Wildcard Mode — assign sequential IPs to hubs during boot
+  - NEW: Auto-fill dialog prompts for starting IP address
+  - Subnet-aware skip logic avoids reassigning hubs already on correct subnet
+  - Diagnostics tab for advanced troubleshooting (hidden by default)
 
 1.2.10 (2026-04-14)
   - NEW: Debug Monitor (View > Debug Stream...) — view real-time logs from hub
